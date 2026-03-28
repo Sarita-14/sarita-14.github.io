@@ -1,68 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Profile</title>
-    <style>
-        body {
-            font-family: Arial;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            text-align: center;
-            padding: 50px;
-        }
+  <meta charset="UTF-8">
+  <title>Sarita's Profile</title>
 
-        .card {
-            background: white;
-            color: black;
-            padding: 20px;
-            border-radius: 15px;
-            width: 300px;
-            margin: auto;
-            box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
-        }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      text-align: center;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
 
-        img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-        }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 20px;
+      width: 300px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
 
-        h2 {
-            margin: 10px 0;
-        }
+    img.profile {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
 
-        .btn {
-            display: block;
-            margin: 10px;
-            padding: 10px;
-            background: #667eea;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #ff7eb3;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
 
-        .btn:hover {
-            background: #5a67d8;
-        }
-    </style>
+    button:hover {
+      background: #ff4e91;
+    }
+
+    #qr {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="card">
-        <img src="photoforpan.jpeg" alt="Profile Photo">
+  <div class="card">
 
-        <h2>Prakash Kori</h2>
+    <!-- 👤 PROFILE IMAGE -->
+    <img src="WhatsApp Image 2026-03-28 at 8.30.10 PM.jpeg" class="profile">
 
-        <p>📞 7057892039</p>
-        <p>📧 prakashk198721@gmail.com</p>
-        <p>📍 Ambernath, Thane, Maharashtra</p>
-        <p>🆔 Aadhar: XXXX XXXX 7304</p>
+    <h2>Sarita Kori</h2>
+    <p>📞 7057892039</p>
+    <p>📧 prakashk198721@gmail.com</p>
+    <p>📍 Ambernath, Thane, Maharashtra</p>
+    <p>🆔 Aadhar: 290790497304</p>
 
-        <a class="btn" href="tel:7057892039">📞 Call</a>
-        <a class="btn" href="mailto:prakashk198721@gmail.com">📧 Email</a>
-        <a class="btn" href="contact.vcf" download>💾 Save Contact</a>
-    </div>
+    <!-- 🔳 QR BUTTON -->
+    <button onclick="generateQR()">Generate QR</button>
+
+    <!-- ⬇ DOWNLOAD BUTTON -->
+    <button onclick="downloadQR()">Download QR</button>
+
+    <!-- QR IMAGE -->
+    <div id="qr"></div>
+
+  </div>
+
+  <script>
+    let qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sarita-14.github.io/";
+
+    function generateQR() {
+      document.getElementById("qr").innerHTML =
+        `<img src="${qrUrl}" id="qrImage">`;
+    }
+
+    function downloadQR() {
+      let link = document.createElement('a');
+      link.href = qrUrl;
+      link.download = "MyQR.png";
+      link.click();
+    }
+  </script>
 
 </body>
 </html>

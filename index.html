@@ -1,96 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Sarita's Profile</title>
+<!-- 🔳 QR SECTION -->
+<button onclick="generateQR()">Show My QR</button>
+<button onclick="downloadQR()">Download QR</button>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      text-align: center;
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
+<div id="qr"></div>
 
-    .card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      margin: 50px auto;
-      padding: 30px;
-      border-radius: 20px;
-      width: 300px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
+<script>
+  // 👇 THIS is your website link
+  let websiteLink = "https://sarita-14.github.io/";
 
-    img.profile {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid white;
-    }
+  let qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" 
+              + encodeURIComponent(websiteLink);
 
-    button {
-      margin: 10px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      background: #ff7eb3;
-      color: white;
-      cursor: pointer;
-      font-size: 14px;
-    }
+  function generateQR() {
+    document.getElementById("qr").innerHTML =
+      `<img src="${qrUrl}" id="qrImage">`;
+  }
 
-    button:hover {
-      background: #ff4e91;
-    }
-
-    #qr {
-      margin-top: 20px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="card">
-
-    <!-- 👤 PROFILE IMAGE -->
-    <img src="WhatsApp Image 2026-03-28 at 8.30.10 PM.jpeg" class="profile">
-
-    <h2>Sarita Kori</h2>
-    <p>📞 7057892039</p>
-    <p>📧 prakashk198721@gmail.com</p>
-    <p>📍 Ambernath, Thane, Maharashtra</p>
-    <p>🆔 Aadhar: 290790497304</p>
-
-    <!-- 🔳 QR BUTTON -->
-    <button onclick="generateQR()">Generate QR</button>
-
-    <!-- ⬇ DOWNLOAD BUTTON -->
-    <button onclick="downloadQR()">Download QR</button>
-
-    <!-- QR IMAGE -->
-    <div id="qr"></div>
-
-  </div>
-
-  <script>
-    let qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sarita-14.github.io/";
-
-    function generateQR() {
-      document.getElementById("qr").innerHTML =
-        `<img src="${qrUrl}" id="qrImage">`;
-    }
-
-    function downloadQR() {
-      let link = document.createElement('a');
-      link.href = qrUrl;
-      link.download = "MyQR.png";
-      link.click();
-    }
-  </script>
-
-</body>
-</html>
+  function downloadQR() {
+    let link = document.createElement('a');
+    link.href = qrUrl;
+    link.download = "SaritaProfileQR.png";
+    link.click();
+  }
+</script>

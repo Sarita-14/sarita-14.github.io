@@ -7,14 +7,14 @@
 body {
     margin: 0;
     font-family: 'Segoe UI';
+
+    /* AESTHETIC BACKGROUND */
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* BACKGROUND IMAGE + OVERLAY */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-                url("profile.jpg") center/cover no-repeat;
 }
 
 /* CARD */
@@ -24,17 +24,20 @@ body {
     border-radius: 20px;
     text-align: center;
     color: white;
+
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(15px);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* PROFILE IMAGE */
+/* IMAGE */
 .profile-img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #00c6ff;
+    border: 3px solid #ffffff;
 }
 
 /* TEXT */
@@ -47,12 +50,14 @@ p {
     font-size: 14px;
 }
 
-/* SOCIAL */
+/* SOCIAL TITLE */
 .social-title {
     margin-top: 15px;
     font-weight: bold;
+    font-size: 16px;
 }
 
+/* SOCIAL BUTTONS */
 .social a {
     display: block;
     margin: 8px 0;
@@ -61,16 +66,19 @@ p {
     text-decoration: none;
     color: white;
     font-weight: bold;
+    transition: 0.3s;
 }
 
-/* INSTAGRAM */
 .insta {
     background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
 }
 
-/* WHATSAPP */
 .whatsapp {
     background: #25D366;
+}
+
+.social a:hover {
+    transform: scale(1.05);
 }
 
 /* BUTTON */
@@ -79,13 +87,14 @@ p {
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background: #00c6ff;
+    background: #ffffff;
+    color: black;
     cursor: pointer;
+    font-weight: bold;
 }
 
-/* QR */
-#qrcode {
-    margin-top: 15px;
+.btn:hover {
+    background: #ddd;
 }
 </style>
 
@@ -103,51 +112,27 @@ p {
     <p>📧 prakashk198721@gmail.com</p>
     <p>📍 Ambernath, Thane, Maharashtra</p>
     <p>🩸 Blood Group: A+ve</p>
-    <p>🪪 Aadhaar: 1234 5678 9012</p> <!-- CHANGE -->
+
+    <!-- MASKED AADHAAR -->
+    <p>🪪 Aadhaar: **** **** ****</p>
 
     <div class="social-title">Social</div>
 
     <div class="social">
-
-        <!-- FIXED INSTAGRAM -->
-        <a class="insta" href="https://instagram.com/prakash_kori" target="_blank">
+        <a class="insta" href="https://www.instagram.com/prakashkori87?igsh=MXhpdTBzMTlydmNxNg==" target="_blank">
             Instagram
         </a>
 
         <a class="whatsapp" href="https://wa.me/917057892039" target="_blank">
             WhatsApp
         </a>
-
     </div>
 
     <button class="btn" onclick="saveContact()">Save Contact</button>
-    <button class="btn" onclick="downloadQR()">Download QR</button>
-
-    <div id="qrcode"></div>
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <script>
-let url = "https://sarita-14.github.io/profile.html";
-
-let qr = new QRCode(document.getElementById("qrcode"), {
-    text: url,
-    width: 150,
-    height: 150
-});
-
-/* DOWNLOAD QR */
-function downloadQR() {
-    let img = document.querySelector("#qrcode img");
-    let link = document.createElement("a");
-    link.href = img.src;
-    link.download = "MyQR.png";
-    link.click();
-}
-
-/* FIXED VCF */
 function saveContact() {
     let vCard = "BEGIN:VCARD\n" +
                 "VERSION:3.0\n" +

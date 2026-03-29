@@ -1,67 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Profile</title>
+<title>Prakash Kori</title>
 
 <style>
 body {
     margin: 0;
-    font-family: Arial;
-    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    font-family: 'Segoe UI';
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    /* BACKGROUND IMAGE + OVERLAY */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+                url("profile.jpg") center/cover no-repeat;
 }
 
+/* CARD */
 .card {
-    background: rgba(255,255,255,0.1);
+    width: 340px;
     padding: 25px;
-    border-radius: 15px;
+    border-radius: 20px;
     text-align: center;
     color: white;
-    width: 320px;
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
 }
 
-img {
+/* PROFILE IMAGE */
+.profile-img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
+    border: 3px solid #00c6ff;
 }
 
+/* TEXT */
 h2 {
     margin: 10px 0;
 }
 
 p {
+    margin: 6px 0;
     font-size: 14px;
-    margin: 5px 0;
 }
 
-.social {
+/* SOCIAL */
+.social-title {
     margin-top: 15px;
+    font-weight: bold;
 }
 
 .social a {
     display: block;
     margin: 8px 0;
     padding: 10px;
-    background: #00c6ff;
-    color: black;
-    border-radius: 8px;
+    border-radius: 10px;
     text-decoration: none;
+    color: white;
     font-weight: bold;
 }
 
+/* INSTAGRAM */
+.insta {
+    background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
+}
+
+/* WHATSAPP */
+.whatsapp {
+    background: #25D366;
+}
+
+/* BUTTON */
 .btn {
     margin-top: 10px;
     padding: 10px;
     border: none;
-    background: #00c6ff;
     border-radius: 8px;
+    background: #00c6ff;
     cursor: pointer;
+}
+
+/* QR */
+#qrcode {
+    margin-top: 15px;
 }
 </style>
 
@@ -71,8 +95,7 @@ p {
 
 <div class="card">
 
-    <!-- FIX IMAGE PATH -->
-    <img src="profile.jpg">
+    <img src="profile.jpg" class="profile-img">
 
     <h2>Prakash Kori</h2>
 
@@ -80,36 +103,61 @@ p {
     <p>📧 prakashk198721@gmail.com</p>
     <p>📍 Ambernath, Thane, Maharashtra</p>
     <p>🩸 Blood Group: A+ve</p>
+    <p>🪪 Aadhaar: 1234 5678 9012</p> <!-- CHANGE -->
 
-    <h3>Social</h3>
+    <div class="social-title">Social</div>
 
     <div class="social">
-        <a href="https://instagram.com/YOUR_USERNAME" target="_blank">
+
+        <!-- FIXED INSTAGRAM -->
+        <a class="insta" href="https://instagram.com/YOUR_REAL_USERNAME" target="_blank">
             Instagram
         </a>
 
-        <a href="https://wa.me/917057892039" target="_blank">
+        <a class="whatsapp" href="https://wa.me/917057892039" target="_blank">
             WhatsApp
         </a>
+
     </div>
 
     <button class="btn" onclick="saveContact()">Save Contact</button>
+    <button class="btn" onclick="downloadQR()">Download QR</button>
+
+    <div id="qrcode"></div>
 
 </div>
 
-<script>
-function saveContact() {
-    let vCard = `
-BEGIN:VCARD
-VERSION:3.0
-FN:Prakash Kori
-TEL:7057892039
-EMAIL:prakashk198721@gmail.com
-ADR:Ambernath, Thane, Maharashtra
-END:VCARD
-    `;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    let blob = new Blob([vCard], { type: "text/vcard" });
+<script>
+let url = "https://sarita-14.github.io/profile.html";
+
+let qr = new QRCode(document.getElementById("qrcode"), {
+    text: url,
+    width: 150,
+    height: 150
+});
+
+/* DOWNLOAD QR */
+function downloadQR() {
+    let img = document.querySelector("#qrcode img");
+    let link = document.createElement("a");
+    link.href = img.src;
+    link.download = "MyQR.png";
+    link.click();
+}
+
+/* FIXED VCF */
+function saveContact() {
+    let vCard = "BEGIN:VCARD\n" +
+                "VERSION:3.0\n" +
+                "FN:Prakash Kori\n" +
+                "TEL;TYPE=CELL:7057892039\n" +
+                "EMAIL:prakashk198721@gmail.com\n" +
+                "ADR:Ambernath, Thane, Maharashtra\n" +
+                "END:VCARD";
+
+    let blob = new Blob([vCard], { type: "text/vcard;charset=utf-8" });
     let link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
     link.download = "contact.vcf";

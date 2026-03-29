@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Prakash Kori</title>
-
 <style>
 body {
     margin: 0;
     font-family: 'Segoe UI';
 
-    /* AESTHETIC BACKGROUND */
-    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    /* AESTHETIC PREMIUM BACKGROUND */
+    background: radial-gradient(circle at top left, #2b5876, transparent 40%),
+                radial-gradient(circle at bottom right, #4e4376, transparent 40%),
+                linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 
     height: 100vh;
     display: flex;
@@ -26,9 +23,9 @@ body {
     color: white;
 
     background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(18px);
 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
 /* IMAGE */
@@ -37,7 +34,7 @@ body {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #ffffff;
+    border: 3px solid rgba(255,255,255,0.6);
 }
 
 /* TEXT */
@@ -97,58 +94,3 @@ p {
     background: #ddd;
 }
 </style>
-
-</head>
-
-<body>
-
-<div class="card">
-
-    <img src="profile.jpg" class="profile-img">
-
-    <h2>Prakash Kori</h2>
-
-    <p>📞 7057892039</p>
-    <p>📧 prakashk198721@gmail.com</p>
-    <p>📍 Ambernath, Thane, Maharashtra</p>
-    <p>🩸 Blood Group: A+ve</p>
-
-    <!-- MASKED AADHAAR -->
-    <p>🪪 Aadhaar: **** **** ****</p>
-
-    <div class="social-title">Social</div>
-
-    <div class="social">
-        <a class="insta" href="https://www.instagram.com/prakashkori87?igsh=MXhpdTBzMTlydmNxNg==" target="_blank">
-            Instagram
-        </a>
-
-        <a class="whatsapp" href="https://wa.me/917057892039" target="_blank">
-            WhatsApp
-        </a>
-    </div>
-
-    <button class="btn" onclick="saveContact()">Save Contact</button>
-
-</div>
-
-<script>
-function saveContact() {
-    let vCard = "BEGIN:VCARD\n" +
-                "VERSION:3.0\n" +
-                "FN:Prakash Kori\n" +
-                "TEL;TYPE=CELL:7057892039\n" +
-                "EMAIL:prakashk198721@gmail.com\n" +
-                "ADR:Ambernath, Thane, Maharashtra\n" +
-                "END:VCARD";
-
-    let blob = new Blob([vCard], { type: "text/vcard;charset=utf-8" });
-    let link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "contact.vcf";
-    link.click();
-}
-</script>
-
-</body>
-</html>

@@ -10,7 +10,8 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
 
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    /* 🔥 AESTHETIC BACKGROUND (SOFT + PREMIUM) */
+    background: linear-gradient(135deg, #dbeafe, #f0f9ff);
 
     min-height: 100vh;
     display: flex;
@@ -18,58 +19,58 @@ body {
     align-items: center;
 }
 
-/* STRONG FLOAT ANIMATION */
+/* FLOAT */
 @keyframes float {
     0% { transform: translateY(0px); }
-    50% { transform: translateY(-18px); } /* more visible */
+    50% { transform: translateY(-15px); }
     100% { transform: translateY(0px); }
 }
 
 /* CARD */
 .card {
-    width: 90%;
-    max-width: 420px;
-    padding: 32px;
+    width: 92%;              /* 🔥 more width */
+    max-width: 460px;        /* 🔥 bigger */
+    padding: 35px;
+
     border-radius: 25px;
     text-align: center;
-    color: white;
 
-    /* 🔥 GLASS EFFECT FIX */
-    background: rgba(255, 255, 255, 0.25); /* stronger */
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px); /* safari support */
+    /* 🔥 LIGHT GLASS (NO WHITE HARSH) */
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
 
-    border: 1px solid rgba(255,255,255,0.3);
+    color: #1e293b; /* 🔥 DARK TEXT (VISIBLE) */
 
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 
     animation: float 3s ease-in-out infinite;
 }
 
 /* IMAGE */
 .profile-img {
-    width: 135px;
-    height: 135px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid rgba(255,255,255,0.9);
+    border: 3px solid #2563eb;
 }
 
 /* TEXT */
 h2 {
-    margin: 10px 0;
+    margin: 12px 0;
     font-weight: 600;
 }
 
 p {
-    margin: 6px 0;
+    margin: 7px 0;
     font-size: 15px;
 }
 
 /* LINKS */
 a.info-link {
-    color: white;
+    color: #2563eb;
     text-decoration: none;
+    font-weight: 500;
 }
 
 /* SOCIAL TITLE */
@@ -91,6 +92,7 @@ a.info-link {
     transition: 0.3s;
 }
 
+/* COLORS */
 .insta {
     background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
 }
@@ -109,14 +111,14 @@ a.info-link {
     padding: 13px;
     border: none;
     border-radius: 12px;
-    background: rgba(0,0,0,0.8);
+    background: #2563eb;
     color: white;
     cursor: pointer;
     font-weight: bold;
 }
 
 .btn:hover {
-    background: black;
+    background: #1d4ed8;
 }
 </style>
 

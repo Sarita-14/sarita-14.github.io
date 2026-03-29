@@ -1,157 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prakash Kori Profile</title>
+<title>Scan My QR</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#141e30,#243b55);
+    color: white;
+    font-family: Arial;
+    text-align: center;
+}
 
-    .card {
-        background: rgba(255, 255, 255, 0.08);
-        padding: 30px;
-        border-radius: 20px;
-        text-align: center;
-        width: 320px;
-        color: white;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    }
+.box {
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
 
-    .profile-img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid #00c6ff;
-        background: transparent; /* FIXED */
-    }
-
-    h2 {
-        margin: 10px 0;
-    }
-
-    p {
-        margin: 6px 0;
-        font-size: 14px;
-    }
-
-    .btn {
-        margin: 10px 5px;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 8px;
-        background: #00c6ff;
-        color: black;
-        cursor: pointer;
-        font-weight: bold;
-    }
-
-    .btn:hover {
-        background: #00a2cc;
-    }
-
-    .icons {
-        margin-top: 15px;
-    }
-
-    .icons a {
-        margin: 0 10px;
-        text-decoration: none;
-        font-size: 24px;
-    }
-
-    .click-text {
-        font-size: 12px;
-        color: #ccc;
-        margin-top: 5px;
-    }
-
-    #qr {
-        margin-top: 15px;
-    }
+#qrcode {
+    margin-top: 20px;
+}
 </style>
-
 </head>
+
 <body>
 
-<div class="card">
-    <img src="profile.jpg" class="profile-img">
-
-    <h2>Prakash Kori</h2>
-
-    <p>📞 7057892039</p>
-    <p>📧 prakashk198721@gmail.com</p>
-    <p>📍 Ambernath, Thane</p>
-    <p>🩸 Blood Group: A+ve</p>
-    <p>💰 GPay: 7057892039</p>
-
-    <button class="btn" onclick="saveContact()">Save Contact</button>
-    <button class="btn" onclick="downloadQR()">Download QR</button>
-
-    <div id="qr"></div>
-
-    <div class="icons">
-        <p class="click-text">👉 Click icons to visit profile</p>
-
-        <!-- Instagram -->
-        <a href="https://instagram.com/YOUR_USERNAME" target="_blank">
-            📸
-        </a>
-
-        <!-- WhatsApp -->
-        <a href="https://wa.me/917057892039" target="_blank">
-            💬
-        </a>
-    </div>
+<div class="box">
+    <h2>📲 Scan this to view my profile</h2>
+    <div id="qrcode"></div>
 </div>
 
-<!-- QR Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
-    let profileURL = "https://sarita-14.github.io/";
-
-    let qr = new QRCode(document.getElementById("qr"), {
-        text: profileURL,
-        width: 150,
-        height: 150
-    });
-
-    function downloadQR() {
-        let img = document.querySelector("#qr img");
-        let link = document.createElement("a");
-        link.href = img.src;
-        link.download = "MyQR.png";
-        link.click();
-    }
-
-    function saveContact() {
-        let vCard = `
-BEGIN:VCARD
-VERSION:3.0
-FN:Prakash Kori
-TEL:7057892039
-EMAIL:prakashk198721@gmail.com
-ADR:Ambernath, Thane
-END:VCARD
-        `;
-
-        let blob = new Blob([vCard], { type: "text/vcard" });
-        let link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = "contact.vcf";
-        link.click();
-    }
+new QRCode(document.getElementById("qrcode"), {
+    text: "https://sarita-14.github.io/profile.html",
+    width: 200,
+    height: 200
+});
 </script>
 
 </body>

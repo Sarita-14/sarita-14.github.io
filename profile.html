@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Profile</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    width: 320px;
+    backdrop-filter: blur(10px);
+}
+
+img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+h2 {
+    margin: 10px 0;
+}
+
+p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.social {
+    margin-top: 15px;
+}
+
+.social a {
+    display: block;
+    margin: 8px 0;
+    padding: 10px;
+    background: #00c6ff;
+    color: black;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    background: #00c6ff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- FIX IMAGE PATH -->
+    <img src="profile.jpg">
+
+    <h2>Prakash Kori</h2>
+
+    <p>📞 7057892039</p>
+    <p>📧 prakashk198721@gmail.com</p>
+    <p>📍 Ambernath, Thane, Maharashtra</p>
+    <p>🩸 Blood Group: A+ve</p>
+
+    <h3>Social</h3>
+
+    <div class="social">
+        <a href="https://instagram.com/YOUR_USERNAME" target="_blank">
+            Instagram
+        </a>
+
+        <a href="https://wa.me/917057892039" target="_blank">
+            WhatsApp
+        </a>
+    </div>
+
+    <button class="btn" onclick="saveContact()">Save Contact</button>
+
+</div>
+
+<script>
+function saveContact() {
+    let vCard = `
+BEGIN:VCARD
+VERSION:3.0
+FN:Prakash Kori
+TEL:7057892039
+EMAIL:prakashk198721@gmail.com
+ADR:Ambernath, Thane, Maharashtra
+END:VCARD
+    `;
+
+    let blob = new Blob([vCard], { type: "text/vcard" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "contact.vcf";
+    link.click();
+}
+</script>
+
+</body>
+</html>

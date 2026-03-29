@@ -10,7 +10,7 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
 
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
 
     min-height: 100vh;
     display: flex;
@@ -18,10 +18,10 @@ body {
     align-items: center;
 }
 
-/* FLOAT ANIMATION */
+/* STRONG FLOAT ANIMATION */
 @keyframes float {
     0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-18px); } /* more visible */
     100% { transform: translateY(0px); }
 }
 
@@ -34,12 +34,16 @@ body {
     text-align: center;
     color: white;
 
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(20px);
+    /* 🔥 GLASS EFFECT FIX */
+    background: rgba(255, 255, 255, 0.25); /* stronger */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px); /* safari support */
+
+    border: 1px solid rgba(255,255,255,0.3);
 
     box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 
-    animation: float 4s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
 }
 
 /* IMAGE */
@@ -48,8 +52,7 @@ body {
     height: 135px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid rgba(255,255,255,0.8);
-    margin-bottom: 10px;
+    border: 3px solid rgba(255,255,255,0.9);
 }
 
 /* TEXT */
@@ -61,10 +64,9 @@ h2 {
 p {
     margin: 6px 0;
     font-size: 15px;
-    opacity: 0.95;
 }
 
-/* CLICKABLE LINKS */
+/* LINKS */
 a.info-link {
     color: white;
     text-decoration: none;
@@ -87,25 +89,6 @@ a.info-link {
     color: white;
     font-weight: bold;
     transition: 0.3s;
-    position: relative;
-    overflow: hidden;
-}
-
-/* SHINE EFFECT */
-.social a::before {
-    content: "";
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    background: rgba(255,255,255,0.3);
-    top: 0;
-    left: -100%;
-    transform: skewX(-25deg);
-}
-
-.social a:hover::before {
-    left: 150%;
-    transition: 0.5s;
 }
 
 .insta {
@@ -117,7 +100,7 @@ a.info-link {
 }
 
 .social a:hover {
-    transform: scale(1.07);
+    transform: scale(1.08);
 }
 
 /* BUTTON */
@@ -126,16 +109,14 @@ a.info-link {
     padding: 13px;
     border: none;
     border-radius: 12px;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
     color: white;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.3s;
 }
 
 .btn:hover {
     background: black;
-    transform: scale(1.05);
 }
 </style>
 

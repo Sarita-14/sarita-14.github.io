@@ -1,76 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Prakash Profile</title>
+<meta charset="UTF-8">
+<title>Prakash Profile</title>
 
-  <style>
-    body {
-      font-family: Arial;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      text-align: center;
-      color: white;
-    }
+<style>
+body {
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+  text-align: center;
+}
 
-    .card {
-      margin: 50px auto;
-      padding: 20px;
-      width: 320px;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.1);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
+.card {
+  background: #1e293b;
+  width: 340px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
 
-    img.profile {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid white;
-    }
+img.profile {
+  width: 140px;
+  border-radius: 15px;
+}
 
-    button {
-      margin: 10px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      background: #ff7eb3;
-      color: white;
-    }
+button {
+  margin: 8px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #38bdf8;
+  color: black;
+  cursor: pointer;
+}
 
-    button:hover {
-      background: #ff4e91;
-    }
+button:hover {
+  background: #0ea5e9;
+}
 
-    #qr img {
-      margin-top: 15px;
-      border-radius: 10px;
-    }
-  </style>
+.socials a {
+  display: block;
+  margin: 5px;
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+#qr img {
+  margin-top: 15px;
+}
+</style>
+
 </head>
 
 <body>
 
 <div class="card">
-  <!-- ✅ Replace with your image -->
-  <img src="Gemini_Generated_Image_pqd7iwpqd7iwpqd7.png" class="profile">
 
-  <h2>Prakash Kori</h2>
+<img src="profile.png" class="profile">
 
-  <p>📞 7057892039</p>
-  <p>📧 prakashk198721@gmail.com</p>
-  <p>📍 Ambernath, Thane, Maharashtra</p>
-  <p>🆔 Aadhar: 290790497***</p>
+<h2>Prakash Kori</h2>
 
-  <button onclick="showQR()">Show QR</button>
+<p>📞 7057892039</p>
+<p>📧 prakashk198721@gmail.com</p>
+<p>📍 Ambernath, Thane</p>
+<p>🩸 Blood Group: A+ve</p>
+<p>💰 GPay: 7057892039</p>
 
-  <div id="qr"></div>
+<!-- SAVE CONTACT -->
+<button onclick="saveContact()">Save Contact</button>
+
+<!-- QR -->
+<button onclick="showQR()">Show My QR</button>
+
+<div id="qr"></div>
+
+<hr>
+
+<h3>Socials</h3>
+
+<div class="socials">
+  <a href="https://wa.me/917057892039" target="_blank">WhatsApp</a>
+  <a href="https://www.instagram.com/prakashkori87" target="_blank">Instagram</a>
+</div>
+
+<!-- Instagram QR -->
+<h4>Instagram QR</h4>
+<img src="profile.png" width="200">
+
 </div>
 
 <script>
-function showQR() {
 
-  // ✅ ONLY WEBSITE LINK
+// MAIN QR (opens your website)
+function showQR() {
   let link = "https://sarita-14.github.io/";
 
   let qr = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data="
@@ -79,6 +103,26 @@ function showQR() {
   document.getElementById("qr").innerHTML =
     "<img src='" + qr + "'>";
 }
+
+// SAVE CONTACT
+function saveContact() {
+  let vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:Prakash Kori
+TEL:7057892039
+EMAIL:prakashk198721@gmail.com
+ADR:Ambernath, Thane
+NOTE:Blood Group A+ve, GPay 7057892039
+END:VCARD`;
+
+  let blob = new Blob([vCard], { type: "text/vcard" });
+  let link = document.createElement("a");
+
+  link.href = URL.createObjectURL(blob);
+  link.download = "PrakashKori.vcf";
+  link.click();
+}
+
 </script>
 
 </body>

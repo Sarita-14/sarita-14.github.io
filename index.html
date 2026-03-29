@@ -10,10 +10,9 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
 
-    /* 🔥 NICE BACKGROUND */
     background: linear-gradient(135deg, #1e3a8a, #0f172a);
 
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,50 +20,56 @@ body {
 
 /* 🔥 BIG CONTAINER */
 .container {
-    width: 95%;
-    max-width: 500px;   /* bigger */
-    padding: 40px;
+    width: 96%;
+    max-width: 550px;   /* bigger */
+    padding: 45px;
 
     text-align: center;
     border-radius: 25px;
 
-    background: rgba(15, 23, 42, 0.85);
+    background: rgba(15, 23, 42, 0.9);
     color: #e2e8f0;
 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
 
 /* TITLE */
 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 26px;
+    margin-bottom: 25px;
 }
 
-/* 🔥 BIG QR */
+/* 🔥 HUGE QR */
 .qr-img {
-    width: 280px;   /* BIG */
+    width: 350px;   /* 🔥 VERY BIG */
     max-width: 100%;
     border-radius: 15px;
-    margin: 20px 0;
+    margin: 25px 0;
+    transition: 0.3s;
+}
+
+/* CLICK EFFECT */
+.qr-img:hover {
+    transform: scale(1.05);
 }
 
 /* TEXT */
 p {
-    font-size: 16px;
+    font-size: 17px;
     opacity: 0.9;
 }
 
 /* BUTTON */
 .btn {
     margin-top: 20px;
-    padding: 14px;
+    padding: 15px;
     width: 100%;
     border: none;
     border-radius: 12px;
 
     background: #38bdf8;
     color: #0f172a;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bold;
 
     cursor: pointer;
@@ -81,14 +86,16 @@ p {
 
 <div class="container">
 
-    <h1>📲 Scan this QR to view Prakash's Profile</h1>
+    <h1>📲 Scan OR Tap QR to View Profile</h1>
 
-    <!-- 🔥 YOUR QR IMAGE -->
-    <img src="qr.png" class="qr-img">
+    <!-- 🔥 CLICKABLE QR -->
+    <a href="profile.html">
+        <img src="qr.png" class="qr-img">
+    </a>
 
-    <p>Scan using any QR scanner to open profile</p>
+    <p>Tap or scan to open Prakash's profile</p>
 
-    <!-- DOWNLOAD BUTTON -->
+    <!-- DOWNLOAD -->
     <a href="qr.png" download>
         <button class="btn">⬇ Download QR</button>
     </a>

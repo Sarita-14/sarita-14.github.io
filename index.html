@@ -1,25 +1,85 @@
-<!-- 🔳 QR SECTION -->
-<button onclick="generateQR()">Show My QR</button>
-<button onclick="downloadQR()">Download QR</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prakash Profile</title>
 
-<div id="qr"></div>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      text-align: center;
+      color: white;
+    }
+
+    .card {
+      margin: 50px auto;
+      padding: 20px;
+      width: 320px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    img.profile {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #ff7eb3;
+      color: white;
+    }
+
+    button:hover {
+      background: #ff4e91;
+    }
+
+    #qr img {
+      margin-top: 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <!-- ✅ Replace with your image -->
+  <img src="profile.jpg" class="profile">
+
+  <h2>Prakash Kori</h2>
+
+  <p>📞 7057892039</p>
+  <p>📧 prakashk198721@gmail.com</p>
+  <p>📍 Ambernath, Thane, Maharashtra</p>
+  <p>🆔 Aadhar: 290790497***</p>
+
+  <button onclick="showQR()">Show QR</button>
+
+  <div id="qr"></div>
+</div>
 
 <script>
-  // 👇 THIS is your website link
-  let websiteLink = "https://sarita-14.github.io/";
+function showQR() {
 
-  let qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" 
-              + encodeURIComponent(websiteLink);
+  // ✅ ONLY WEBSITE LINK
+  let link = "https://sarita-14.github.io/";
 
-  function generateQR() {
-    document.getElementById("qr").innerHTML =
-      `<img src="${qrUrl}" id="qrImage">`;
-  }
+  let qr = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data="
+           + encodeURIComponent(link);
 
-  function downloadQR() {
-    let link = document.createElement('a');
-    link.href = qrUrl;
-    link.download = "SaritaProfileQR.png";
-    link.click();
-  }
+  document.getElementById("qr").innerHTML =
+    "<img src='" + qr + "'>";
+}
 </script>
+
+</body>
+</html>

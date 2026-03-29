@@ -1,65 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Scan My QR</title>
+<title>Scan QR - Prakash Kori</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+
+    /* 🔥 NICE BACKGROUND */
+    background: linear-gradient(135deg, #1e3a8a, #0f172a);
+
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
-
-    background: linear-gradient(135deg, #89f7fe, #66a6ff);
 }
 
-/* BOX */
-.box {
-    text-align: center;
-    background: rgba(255,255,255,0.25);
+/* 🔥 BIG CONTAINER */
+.container {
+    width: 95%;
+    max-width: 500px;   /* bigger */
     padding: 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* 🔥 FIXED CENTER */
+    text-align: center;
+    border-radius: 25px;
+
+    background: rgba(15, 23, 42, 0.85);
+    color: #e2e8f0;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* TITLE */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* 🔥 BIG QR */
+.qr-img {
+    width: 280px;   /* BIG */
+    max-width: 100%;
+    border-radius: 15px;
+    margin: 20px 0;
 }
 
 /* TEXT */
-h2 {
-    margin-bottom: 10px;
-}
-
 p {
-    color: #333;
-    font-size: 14px;
-}
-
-/* QR FIX */
-#qrcode {
-    margin: 20px auto; /* 🔥 PERFECT CENTER */
+    font-size: 16px;
+    opacity: 0.9;
 }
 
 /* BUTTON */
 .btn {
-    margin-top: 15px;
-    padding: 10px 15px;
+    margin-top: 20px;
+    padding: 14px;
+    width: 100%;
     border: none;
-    border-radius: 8px;
-    background: #333;
-    color: white;
-    cursor: pointer;
+    border-radius: 12px;
+
+    background: #38bdf8;
+    color: #0f172a;
+    font-size: 16px;
     font-weight: bold;
+
+    cursor: pointer;
 }
 
 .btn:hover {
-    background: #000;
+    background: #0ea5e9;
 }
 </style>
 
@@ -67,34 +79,21 @@ p {
 
 <body>
 
-<div class="box">
+<div class="container">
 
-    <h2>📲 Scan this QR</h2>
-    <p>Scan this QR to view Prakash's Profile</p>
+    <h1>📲 Scan this QR to view Prakash's Profile</h1>
 
-    <div id="qrcode"></div>
+    <!-- 🔥 YOUR QR IMAGE -->
+    <img src="qr.png" class="qr-img">
 
-    <button class="btn" onclick="downloadQR()">Download QR</button>
+    <p>Scan using any QR scanner to open profile</p>
+
+    <!-- DOWNLOAD BUTTON -->
+    <a href="qr.png" download>
+        <button class="btn">⬇ Download QR</button>
+    </a>
 
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<script>
-let qr = new QRCode(document.getElementById("qrcode"), {
-    text: "https://sarita-14.github.io/profile.html",
-    width: 200,
-    height: 200
-});
-
-function downloadQR() {
-    let img = document.querySelector("#qrcode img");
-    let link = document.createElement("a");
-    link.href = img.src;
-    link.download = "PrakashQR.png";
-    link.click();
-}
-</script>
 
 </body>
 </html>
